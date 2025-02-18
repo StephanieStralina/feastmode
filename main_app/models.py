@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils.crypto import get_random_string
+from uuid import uuid4
 
 RSVP_STATUS = (
   ('I', 'Invited'),
@@ -31,6 +31,9 @@ class Rsvp(models.Model):
   # email = models.EmailField()
   user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 
+  def __str__(self):
+    return f"{self.status} - {self.user.email}"
+
 class Dish(models.Model):
   name = models.CharField(max_length=100)
   description = models.TextField(max_length=500)
@@ -41,16 +44,15 @@ class Dish(models.Model):
   )
   claimed_by = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
+  def __str__(self):
+    return f"{self.name}"
+
 class Party(models.Model):
   name = models.CharField(max_length=100)
   owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-  invite_id = models.CharField(
-     max_length=6, 
-     default=lambda: get_random_string(6), 
-     editable=False, 
-     unique=True)
-  rsvp = models.ForeignKey(Rsvp, on_delete=models.CASCADE)
-  dishes = models.ForeignKey(Dish, on_delete=models.CASCADE)
+  invite_id = models.CharField(max_length=6, unique=True, blank=True, null=True)
+  rsvp = models.ForeignKey(Rsvp, on_delete=models.CASCADE, blank=True, null=True)
+  dishes = models.ForeignKey(Dish, on_delete=models.CASCADE, blank=True, null=True)
   time = models.DateField()
   location = models.CharField(max_length=150)
   dresscode = models.CharField(max_length=100)
@@ -60,4 +62,10 @@ class Party(models.Model):
     default=PARTY_STATUS[0][0],
   )
 
+  def save(self, *args, **kwargs):
+    if not self.invite_id:
+      self.invite_id = str(uuid4())[:6]
+      super().save(*args, **kwargs)
 
+  def __str__(self):
+    return f"{self.name}"
