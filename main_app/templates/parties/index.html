@@ -1,0 +1,21 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+{% endblock %} 
+{% block content %}
+
+<section>
+    <h1>List of Parties!!! You made them!</h1>
+</section>
+<section>
+    {% for party in parties %}
+    <p><a href="{% url 'party-detail' party.invite_id %}">{{ party.name }}</a></p>
+    {% endfor %}
+</section>
+
+
+
+
+
+
+{% endblock %}
