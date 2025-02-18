@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.crypto import get_random_string
 
 RSVP_STATUS = (
   ('I', 'Invited'),
@@ -43,7 +44,11 @@ class Dish(models.Model):
 class Party(models.Model):
   name = models.CharField(max_length=100)
   owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-  invite_id = models.CharField(max_length=6, unique=True, blank=True)
+  invite_id = models.CharField(
+     max_length=6, 
+     default=lambda: get_random_string(6), 
+     editable=False, 
+     unique=True)
   rsvp = models.ForeignKey(Rsvp, on_delete=models.CASCADE)
   dishes = models.ForeignKey(Dish, on_delete=models.CASCADE)
   time = models.DateField()
@@ -54,3 +59,5 @@ class Party(models.Model):
     choices=PARTY_STATUS,
     default=PARTY_STATUS[0][0],
   )
+
+
