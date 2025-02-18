@@ -45,6 +45,5 @@ class PartyUpdate(LoginRequiredMixin, UpdateView):
     model = Party
     fields = ['name', 'time', 'location', 'dresscode']
 
-    def get_object(self,queryset= None):
-        print(self.kwargs.get('invite_id'))
-        return Party.objects.get(invite_id= self.kwargs.get('invite_id'))
+    def get_object(self, queryset=None):
+        return Party.objects.get(invite_id=self.kwargs.get('invite_id'))
