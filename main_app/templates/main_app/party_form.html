@@ -3,6 +3,11 @@
 {% block head %}
 {% endblock %} 
 {% block content %}
+{% if party %}
+<h1>Edit {{ party.name }}</h1>
+{% else %}
+<h1>Add a Party</h1>
+{% endif %}
 <form action="" method="post" class="form-container">
   {% csrf_token %}
   <table>

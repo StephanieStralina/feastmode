@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import UserCreationForm 
 from django.shortcuts import render, redirect
 from main_app.models import Party
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
@@ -41,5 +41,14 @@ class PartyCreate(LoginRequiredMixin, CreateView):
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
+class PartyUpdate(LoginRequiredMixin, UpdateView):
+    model = Party
+    fields = ['name', 'time', 'location', 'dresscode']
 
-
+    def get_object(self,queryset= None):
+        print(self.kwargs.get('invite_id'))
+        return Party.objects.get(invite_id= self.kwargs.get('invite_id'))
+    
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)

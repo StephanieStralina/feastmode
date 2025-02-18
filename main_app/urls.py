@@ -7,6 +7,6 @@ urlpatterns = [
     path('accounts/signup/', views.signup, name='signup'),
     path('parties/', views.party_index, name='party-index'),
     path('parties/create/', views.PartyCreate.as_view(), name='party-create'),
+    path('parties/<str:invite_id>/update/', views.PartyUpdate.as_view(), name='party-update'),
     path('parties/<str:invite_id>/', views.party_detail, name='party-detail'),
-   
-]
+] 
