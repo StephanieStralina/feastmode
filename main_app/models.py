@@ -43,7 +43,6 @@ class Dish(models.Model):
 class Party(models.Model):
   name = models.CharField(max_length=100)
   owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-  # guest = models.ManyToManyField()
   invite_id = models.CharField(max_length=6, unique=True, blank=True)
   rsvp = models.ForeignKey(Rsvp, on_delete=models.CASCADE)
   dishes = models.ForeignKey(Dish, on_delete=models.CASCADE)
