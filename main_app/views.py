@@ -48,7 +48,3 @@ class PartyUpdate(LoginRequiredMixin, UpdateView):
     def get_object(self,queryset= None):
         print(self.kwargs.get('invite_id'))
         return Party.objects.get(invite_id= self.kwargs.get('invite_id'))
-    
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
