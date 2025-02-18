@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from uuid import uuid4
+from django.urls import reverse
 
 RSVP_STATUS = (
   ('I', 'Invited'),
@@ -69,3 +70,7 @@ class Party(models.Model):
 
   def __str__(self):
     return f"{self.name}"
+  
+  def get_absolute_url(self):
+    # Use the 'reverse' function to dynamically find the URL for viewing this cat's details
+    return reverse('party-detail', kwargs={ 'invite_id': self.invite_id })
