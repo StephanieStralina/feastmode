@@ -34,7 +34,7 @@ class Rsvp(models.Model):
   # party = models.ForeignKey(Party, on_delete=models.DO_NOTHING)
 
   def __str__(self):
-    return f"{self.status} - {self.user.email}"
+    return f"{self.status} - {self.user.username}"
 
 class Dish(models.Model):
   name = models.CharField(max_length=100)

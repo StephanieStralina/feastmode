@@ -2,7 +2,7 @@ from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import UserCreationForm 
 from django.shortcuts import render, redirect
-from main_app.models import Party
+from main_app.models import Party, Rsvp
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import RsvpForm
@@ -57,11 +57,17 @@ def party_find(request):
 def add_rsvp(request, invite_id):
     rsvp_form = RsvpForm(request.POST)
     if rsvp_form.is_valid():
-        new_rsvp = rsvp_form.save(commit=False)
-        new_rsvp.user_id = request.user.id
-        new_rsvp.save()
-
         party = Party.objects.get(invite_id=invite_id)
-        party.rsvp.add(new_rsvp.id)
+        existing_rsvp = None
+        try:
+            existing_rsvp = party.rsvp.get(user_id=request.user.id)
+            if existing_rsvp:
+                existing_rsvp.status = rsvp_form.cleaned_data['status']
+                existing_rsvp.save()
+        except Rsvp.DoesNotExist:
+            new_rsvp = rsvp_form.save(commit=False)
+            new_rsvp.user_id = request.user.id
+            new_rsvp.save()
+            party.rsvp.add(new_rsvp.id)
 
     return redirect('party-detail', invite_id=invite_id)
