@@ -9,5 +9,6 @@ urlpatterns = [
     path('parties/create/', views.PartyCreate.as_view(), name='party-create'),
     path('parties/find/', views.party_find, name='party-find'),
     path('parties/<str:invite_id>/update/', views.PartyUpdate.as_view(), name='party-update'),
+    path('parties/<str:invite_id>/add-rsvp', views.add_rsvp, name='add-rsvp'),
     path('parties/<str:invite_id>/', views.party_detail, name='party-detail'),
 ] 

@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from main_app.models import Party
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import RsvpForm
 
 # Create your views here.
 
@@ -31,7 +32,8 @@ def party_index(request):
 
 def party_detail(request, invite_id):
     party = Party.objects.get(invite_id=invite_id)
-    return render(request, 'parties/party-detail.html', { 'party': party })
+    rsvp_form = RsvpForm()
+    return render(request, 'parties/party-detail.html', { 'party': party, 'rsvp_form': rsvp_form })
 
 class PartyCreate(LoginRequiredMixin, CreateView):
     model = Party
@@ -50,4 +52,16 @@ class PartyUpdate(LoginRequiredMixin, UpdateView):
     
 def party_find(request):
     invite_id = request.GET.get('invite_id')
+    return redirect('party-detail', invite_id=invite_id)
+
+def add_rsvp(request, invite_id):
+    rsvp_form = RsvpForm(request.POST)
+    if rsvp_form.is_valid():
+        new_rsvp = rsvp_form.save(commit=False)
+        new_rsvp.user_id = request.user.id
+        new_rsvp.save()
+
+        party = Party.objects.get(invite_id=invite_id)
+        party.rsvp.add(new_rsvp.id)
+
     return redirect('party-detail', invite_id=invite_id)
