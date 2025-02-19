@@ -66,7 +66,8 @@ class Party(models.Model):
   def save(self, *args, **kwargs):
     if not self.invite_id:
       self.invite_id = str(uuid4())[:6]
-      super().save(*args, **kwargs)
+      
+    super().save(*args, **kwargs)
 
   def __str__(self):
     return f"{self.name}"
