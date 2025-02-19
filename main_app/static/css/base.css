@@ -8,10 +8,6 @@ html {
     box-sizing: inherit;
 }
 
-:root {
-    font-size: 62.5%;
-}
-
 body {
     margin: 0;
     display: flex;

@@ -47,3 +47,7 @@ class PartyUpdate(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         return Party.objects.get(invite_id=self.kwargs.get('invite_id'))
+    
+def party_find(request):
+    invite_id = request.GET.get('invite_id')
+    return redirect('party-detail', invite_id=invite_id)
