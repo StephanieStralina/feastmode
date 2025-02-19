@@ -77,11 +77,16 @@ def add_rsvp(request, invite_id):
 
 class DishCreate(LoginRequiredMixin, CreateView):
     model = Dish
-    fields = '__all__'
+    fields = ['name', 'description', 'category', 'claimed_by']
 
     def dispatch(self, request, *args, **kwargs):
         self.invite_id = kwargs['invite_id']
         return super().dispatch(request, *args, **kwargs)
+    
+    def form_valid(self, form):
+        form.instance.party = Party.objects.get(invite_id=self.invite_id)
+        return super().form_valid(form)
+    
     
     def get_success_url(self, **kwargs):
         return reverse('party-detail', kwargs={ 'invite_id': self.invite_id })

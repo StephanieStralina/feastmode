@@ -34,6 +34,11 @@
 </section>
 <section>
     <h1>Dishes</h1>
+    <ul>
+        {% for dish in party.dishes_set.all %}
+        <li>{{ dish.name }}</li>
+        {% endfor %}
+    </ul>
     <a href="{% url "dish-create" party.invite_id %}">Add a new dish</a>
 </section>
 {% endblock %}
