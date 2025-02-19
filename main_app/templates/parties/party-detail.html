@@ -3,7 +3,6 @@
 {% block head %}
 {% endblock %} 
 {% block content %}
-
 <section>
     <h1>{{ party.name }}'s detail page</h1>
 </section>
@@ -25,7 +24,12 @@
     <p>Link to login/signup</p>
     {% endif %}
 </section>
-
-
-
+<section>
+    <h1>Who's coming?</h1>
+    <ul>
+        {% for rsvp in party.rsvp.all %}
+        <li>{{ rsvp.get_status_display }} - {{ rsvp.user.username }}</li>
+        {% endfor %}
+    </ul>
+</section>
 {% endblock %}
