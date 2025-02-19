@@ -48,7 +48,7 @@ class Dish(models.Model):
 
   def __str__(self):
     return f"{self.name}"
-
+  
 class Party(models.Model):
   name = models.CharField(max_length=100)
   owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
@@ -74,5 +74,4 @@ class Party(models.Model):
     return f"{self.name}"
   
   def get_absolute_url(self):
-    # Use the 'reverse' function to dynamically find the URL for viewing this cat's details
     return reverse('party-detail', kwargs={ 'invite_id': self.invite_id })
