@@ -6,11 +6,11 @@
 
 <section>
     <h1>{{ party.name }}'s detail page</h1>
-    <a href ="{% url 'party-update' party.invite_id%}">Edit</a>
 </section>
 <section>
     {% if party.owner.id == user.id %}
     <p>A little box with the party id</p>
+    <a href ="{% url 'party-update' party.invite_id%}">Edit</a>
     {% elif user.is_authenticated %}
     <form
         action="{% url 'add-rsvp' party.invite_id %}"
