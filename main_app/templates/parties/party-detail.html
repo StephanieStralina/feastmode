@@ -35,7 +35,7 @@
 <section>
     <h1>Dishes</h1>
     <ul>
-        {% for dish in party.dishes_set.all %}
+        {% for dish in party.dish_set.all %}
         <li>{{ dish.name }}</li>
         {% endfor %}
     </ul>
