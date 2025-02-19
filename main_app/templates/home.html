@@ -3,17 +3,30 @@
 {% block head %}
 {% endblock %}
 {% block content %}
-    <h1>Snack</h1>
+<h1>Snack</h1>
 
-    {% if not user.is_authenticated %}
-        <section>
-            <form action="{% url 'home' %}" method="post" class="login">
-                <h1>Login</h1>
-                {% csrf_token %} {{ form.as_p }}
-                <input type="hidden" name="next" value="{{ next }}" />
-                <button type="submit" class="btn submit">Login</button>
-            </form>
-        </section>
-    {% endif %}
+{% if not user.is_authenticated %}
+<section>
+    <form action="{% url 'home' %}" method="post" class="login">
+        <h1>Login</h1>
+        {% csrf_token %} 
+        {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next }}" />
+        <button type="submit" class="btn submit">Login</button>
+    </form>
+</section>
+{% else %}
+<section>
+    <a href="{% url "party-create" %}">Create a Party!</a>
+</section>
+{% endif %}
+<section>
+    <form action="{% url "party-find" %}">
+        {% csrf_token %}
+        <input name="invite_id" maxlength=6 minlength=6 />
+        <button type="submit" class="btn submit">Join Party</button>
+    </form>
+</section>
+
 {% endblock %}
 
