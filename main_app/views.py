@@ -2,7 +2,8 @@ from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import UserCreationForm 
 from django.shortcuts import render, redirect
-from main_app.models import Party, Rsvp
+from django.urls import reverse
+from main_app.models import Party, Rsvp, Dish
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import RsvpForm
@@ -34,7 +35,7 @@ def party_index(request):
 def party_detail(request, invite_id):
     party = Party.objects.get(invite_id=invite_id)
     if request.user:
-       rsvp = get_rsvp(party, request.user.id) 
+        rsvp = get_rsvp(party, request.user.id) 
     
     rsvp_form = RsvpForm(initial={ 'status': rsvp.status } if rsvp else {})
     return render(request, 'parties/party-detail.html', { 'party': party, 'rsvp_form': rsvp_form })
@@ -73,3 +74,30 @@ def add_rsvp(request, invite_id):
             party.rsvp.add(new_rsvp.id)
 
     return redirect('party-detail', invite_id=invite_id)
+
+class DishCreate(LoginRequiredMixin, CreateView):
+    model = Dish
+    fields = ['name', 'description', 'category', 'claimed_by']
+
+    def dispatch(self, request, *args, **kwargs):
+        self.invite_id = kwargs['invite_id']
+        return super().dispatch(request, *args, **kwargs)
+    
+    def form_valid(self, form):
+        form.instance.party = Party.objects.get(invite_id=self.invite_id)
+        return super().form_valid(form)
+    
+    
+    def get_success_url(self, **kwargs):
+        return reverse('party-detail', kwargs={ 'invite_id': self.invite_id })
+
+class DishUpdate(LoginRequiredMixin, UpdateView):
+    model = Dish
+    fields = '__all__'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.invite_id = kwargs['invite_id']
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get_success_url(self, **kwargs):
+        return reverse('party-detail', kwargs={ 'invite_id': self.invite_id })
