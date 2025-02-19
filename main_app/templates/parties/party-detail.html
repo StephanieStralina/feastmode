@@ -8,7 +8,23 @@
     <h1>{{ party.name }}'s detail page</h1>
     <a href ="{% url 'party-update' party.invite_id%}">Edit</a>
 </section>
-
+<section>
+    {% if party.owner.id == user.id %}
+    <p>A little box with the party id</p>
+    {% elif user.is_authenticated %}
+    <form
+        action="{% url 'add-rsvp' party.invite_id %}"
+        method="POST"
+        autocomplete="off"
+    >
+        {% csrf_token %}
+        {{ rsvp_form.as_table }}
+        <button type="submit" class="btn submit">RSVP</button>
+    <form>
+    {% else %}
+    <p>Link to login/signup</p>
+    {% endif %}
+</section>
 
 
 

@@ -2,9 +2,11 @@ from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import UserCreationForm 
 from django.shortcuts import render, redirect
-from main_app.models import Party
+from main_app.models import Party, Rsvp
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import RsvpForm
+from .helpers import get_rsvp
 
 # Create your views here.
 
@@ -31,7 +33,11 @@ def party_index(request):
 
 def party_detail(request, invite_id):
     party = Party.objects.get(invite_id=invite_id)
-    return render(request, 'parties/party-detail.html', { 'party': party })
+    if request.user:
+       rsvp = get_rsvp(party, request.user.id) 
+    
+    rsvp_form = RsvpForm(initial={ 'status': rsvp.status } if rsvp else {})
+    return render(request, 'parties/party-detail.html', { 'party': party, 'rsvp_form': rsvp_form })
 
 class PartyCreate(LoginRequiredMixin, CreateView):
     model = Party
@@ -50,4 +56,20 @@ class PartyUpdate(LoginRequiredMixin, UpdateView):
     
 def party_find(request):
     invite_id = request.GET.get('invite_id')
+    return redirect('party-detail', invite_id=invite_id)
+
+def add_rsvp(request, invite_id):
+    rsvp_form = RsvpForm(request.POST)
+    if rsvp_form.is_valid():
+        party = Party.objects.get(invite_id=invite_id)
+        existing_rsvp = get_rsvp(party, request.user.id)
+        if existing_rsvp:
+            existing_rsvp.status = rsvp_form.cleaned_data['status']
+            existing_rsvp.save()
+        else:
+            new_rsvp = rsvp_form.save(commit=False)
+            new_rsvp.user_id = request.user.id
+            new_rsvp.save()
+            party.rsvp.add(new_rsvp.id)
+
     return redirect('party-detail', invite_id=invite_id)
