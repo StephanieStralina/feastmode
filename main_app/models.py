@@ -22,12 +22,12 @@ PARTY_STATUS = (
   ('A', 'Active'),
   ('C', 'Cancelled')
 )
-  
+
 class Party(models.Model):
   name = models.CharField(max_length=100)
   owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
   invite_id = models.CharField(max_length=6, unique=True, blank=True, null=True)
-  time = models.DateField()
+  time = models.DateTimeField()
   location = models.CharField(max_length=150)
   dresscode = models.CharField(max_length=100)
   status = models.CharField(
