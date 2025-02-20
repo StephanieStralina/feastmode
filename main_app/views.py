@@ -70,8 +70,8 @@ def add_rsvp(request, invite_id):
         else:
             new_rsvp = rsvp_form.save(commit=False)
             new_rsvp.user_id = request.user.id
+            new_rsvp.party_id = party.id
             new_rsvp.save()
-            party.rsvp.add(new_rsvp.id)
 
     return redirect('party-detail', invite_id=invite_id)
 
