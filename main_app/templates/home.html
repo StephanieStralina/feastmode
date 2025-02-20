@@ -3,23 +3,18 @@
 {% block head %}
 {% endblock %}
 {% block content %}
-<h1>Snack</h1>
+<section class="hero-img">
+    <div>
+        <h1>HEY PARTY PEOPLE!</h1>
+        <h4>Are you ready to go FEASTMODE?</h4>
+        <a href="{% url 'signin' %}">LEARN MORE</a>
+    </div>
 
-{% if not user.is_authenticated %}
-<section>
-    <form action="{% url 'home' %}" method="post" class="login">
-        <h1>Login</h1>
-        {% csrf_token %} 
-        {{ form.as_p }}
-        <input type="hidden" name="next" value="{{ next }}" />
-        <button type="submit" class="btn submit">Login</button>
-    </form>
 </section>
-{% else %}
+
 <section>
     <a href="{% url "party-create" %}">Create a Party!</a>
 </section>
-{% endif %}
 <section>
     <form action="{% url "party-find" %}">
         {% csrf_token %}
