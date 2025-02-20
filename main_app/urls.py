@@ -11,6 +11,7 @@ urlpatterns = [
     path('parties/<str:invite_id>/', views.party_detail, name='party-detail'),
     path('parties/<str:invite_id>/update/', views.PartyUpdate.as_view(), name='party-update'),
     path('parties/<str:invite_id>/add-rsvp/', views.add_rsvp, name='add-rsvp'),
+    path('parties/<str:invite_id>/dishes/<int:dish_id>/', views.dish_detail, name='dish-detail'),
     path('parties/<str:invite_id>/dishes/create/', views.DishCreate.as_view(), name='dish-create'),
     path('parties/<str:invite_id>/dishes/<int:pk>/update/', views.DishUpdate.as_view(), name='dish-update'),
     path('parties/<str:invite_id>/dishes/<int:pk>/delete/', views.DishDelete.as_view(), name='dish-delete'),

@@ -117,3 +117,7 @@ class DishDelete(LoginRequiredMixin, DeleteView):
         context['party'] = self.object.party
         return context
 
+def dish_detail(request, dish_id, invite_id):
+    dish = Dish.objects.get(id=dish_id)
+    party = Party.objects.get(invite_id=invite_id)
+    return render(request, 'parties/dish-detail.html', { 'dish': dish, 'party': party })

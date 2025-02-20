@@ -1,0 +1,13 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+{% endblock %} 
+{% block content %}
+<section>
+    <h1>{{ dish.name }}'s detail</h1>
+    <p>{{ dish.description }}</p>
+    <p>{{ dish.category }}</p>
+    <p>{{ dish.claimed_by }}</p>
+</section>
+
+{% endblock %}
