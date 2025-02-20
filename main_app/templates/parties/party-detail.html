@@ -27,7 +27,7 @@
 <section>
     <h1>Who's coming?</h1>
     <ul>
-        {% for rsvp in party.rsvp.all %}
+        {% for rsvp in party.rsvp_set.all %}
         <li>{{ rsvp.get_status_display }} - {{ rsvp.user.username }}</li>
         {% endfor %}
     </ul>
