@@ -23,7 +23,6 @@ PARTY_STATUS = (
   ('C', 'Cancelled')
 )
 
-  
 class Party(models.Model):
   name = models.CharField(max_length=100)
   owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
