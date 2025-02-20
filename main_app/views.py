@@ -6,13 +6,16 @@ from django.urls import reverse
 from main_app.models import Party, Rsvp, Dish
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import RsvpForm
+from .forms import RsvpForm, PartyForm
 from .helpers import get_rsvp
 
 # Create your views here.
 
 class Home(LoginView):
     template_name = 'home.html'
+
+class Signin(LoginView):
+    template_name = 'signin.html'
 
 def signup(request):
     error_message = ''
@@ -42,7 +45,7 @@ def party_detail(request, invite_id):
 
 class PartyCreate(LoginRequiredMixin, CreateView):
     model = Party
-    fields = ['name', 'time', 'location', 'dresscode']
+    form_class = PartyForm
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
@@ -117,3 +120,7 @@ class DishDelete(LoginRequiredMixin, DeleteView):
         context['party'] = self.object.party
         return context
 
+def dish_detail(request, dish_id, invite_id):
+    dish = Dish.objects.get(id=dish_id)
+    party = Party.objects.get(invite_id=invite_id)
+    return render(request, 'parties/dish-detail.html', { 'dish': dish, 'party': party })

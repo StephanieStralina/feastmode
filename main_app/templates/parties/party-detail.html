@@ -37,7 +37,7 @@
     <ul>
         {% for dish in party.dish_set.all %}
         <li>
-            {{ dish.name }}
+            <a href="{% url "dish-detail" party.invite_id dish.id %}">{{ dish.name }}</a>
             <a href="{% url "dish-update" party.invite_id dish.id %}">Edit</a>
             <a href="{% url "dish-delete" party.invite_id dish.id %}">Delete</a>
         </li>
