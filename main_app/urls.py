@@ -13,4 +13,5 @@ urlpatterns = [
     path('parties/<str:invite_id>/add-rsvp/', views.add_rsvp, name='add-rsvp'),
     path('parties/<str:invite_id>/dishes/create/', views.DishCreate.as_view(), name='dish-create'),
     path('parties/<str:invite_id>/dishes/<int:pk>/update/', views.DishUpdate.as_view(), name='dish-update'),
+    path('parties/<str:invite_id>/dishes/<int:pk>/delete/', views.DishDelete.as_view(), name='dish-delete'),
 ] 

@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from main_app.models import Party, Rsvp, Dish
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import RsvpForm
 from .helpers import get_rsvp
@@ -101,3 +101,19 @@ class DishUpdate(LoginRequiredMixin, UpdateView):
     
     def get_success_url(self, **kwargs):
         return reverse('party-detail', kwargs={ 'invite_id': self.invite_id })
+
+class DishDelete(LoginRequiredMixin, DeleteView):
+    model = Dish
+    
+    def dispatch(self, request, *args, **kwargs):
+        self.invite_id = kwargs['invite_id']
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get_success_url(self, **kwargs):
+        return reverse('party-detail', kwargs={ 'invite_id': self.invite_id })
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['party'] = self.object.party
+        return context
+
