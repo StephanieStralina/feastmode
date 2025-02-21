@@ -9,12 +9,11 @@
         <h4>Are you ready to go FEASTMODE?</h4>
         <a href="{% url 'signin' %}">LEARN MORE</a>
     </div>
-
+    <section>
+        <a href="{% url "party-create" %}">Create a Party!</a>
+    </section>
 </section>
 
-<section>
-    <a href="{% url "party-create" %}">Create a Party!</a>
-</section>
 <section>
     <form action="{% url "party-find" %}">
         {% csrf_token %}
