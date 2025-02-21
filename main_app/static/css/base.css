@@ -1,85 +1,141 @@
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+:root {
+  --color-accent: #850d09;
+  --color-primary: #fff6e7;
+  --color-neutral: #f2f2f2;
+  --color-secondary: #f9ede5;
+  --color-dark: #000333;
 }
 
 body {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
-    min-height: 100vh;
-    --nav-bg: rgba(104, 197, 248, 0.7);
-    --nav-bg-ff: rgba(104, 197, 248, 0.9);
-    --borders: rgb(36, 116, 248) solid 2px;
-    --text-color: rgb(17, 20, 17);
-    --link-hover-color: rgb(16, 56, 158);
-    --button-bg: rgb(245, 245, 245);
-    --button-bg-hover: rgb(226, 226, 226);
-    --submit: rgb(26, 128, 0);
-    --warn: rgb(255, 102, 0);
-    --danger: rgb(220, 20, 30);
-    --secondary: rgb(57, 57, 57);
-    --card-box-shadow: 5px 5px 6px -1px #aaa;
-    --font-xtreme: 4.2rem;
-    --font-xxl: 3.6rem;
-    --font-xl: 2.4rem;
-    --font-l: 1.8rem;
-    --font-reg: 1.6rem;
-    --card-border-radius: 6px;
+  background-color: var(--color-primary);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  min-height: 100vh;
+  --text-color: rgb(17, 20, 17);
+  --link-hover-color: rgb(16, 56, 158);
+  --button-bg: rgb(245, 245, 245);
+  --button-bg-hover: rgb(226, 226, 226);
+  --submit: rgb(26, 128, 0);
+  --warn: rgb(255, 102, 0);
+  --danger: rgb(220, 20, 30);
+  --secondary: rgb(57, 57, 57);
+  --card-box-shadow: 5px 5px 6px -1px #aaa;
+  --font-xtreme: 4.2rem;
+  --font-xxl: 3.6rem;
+  --font-xl: 2.4rem;
+  --font-l: 1.8rem;
+  --font-reg: 1.6rem;
+  --card-border-radius: 6px;
 }
 
 header {
-    width: 100%;
-    background: var(--nav-bg-ff);
-    border-bottom: var(--borders);
+  width: 100%;
+  background: var(--nav-bg-ff);
+  border-bottom: var(--borders);
 }
 
 nav {
-    margin: 10px;
+  margin: 10px;
+  background-color: var(--color-dark);
+  color: var(--color-neutral);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 ul {
-    margin: 0;
-    list-style: none;
-    padding: 0;
+  margin: 0;
+  list-style: none;
+  padding: 0;
 }
 
 main {
-    width: 100%;
-    padding: 0 10px;
+  width: 100%;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 h2 {
-    font-size: var(--font-xl);
+  font-size: var(--font-xl);
 }
 
 nav a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
-    font-size: 16px;
+  text-decoration: none;
+  color: var(--color-neutral);
+  font-weight: 600;
+  font-size: 16px;
 }
 
 nav a:hover {
-    color: var(--link-hover-color);
+  color: var(--link-hover-color);
 }
 
 nav ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 nav li {
-    padding: 5px 8px;
+  padding: 5px 8px;
+}
+
+.btn {
+  background-color: var(--color-dark);
+  color: var(--color-neutral);
+  padding: 8px 16px;
+  border-radius: 6px;
+  border-width: 2px;
+  border-style: solid;
+  text-decoration: none;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-img {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url('../images/Hero.jpg');
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.btn-override {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--color-neutral);
+    font: inherit;
+
+}
+
+.flex-row {
+   display: flex; 
+   flex-direction: row;
 }
