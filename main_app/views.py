@@ -1,6 +1,7 @@
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
+from django.utils import timezone
 from django.urls import reverse
 from main_app.models import Party, Rsvp, Dish
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -31,8 +32,17 @@ def signup(request):
     return render(request, 'signup.html', context)
 
 def party_index(request):
-    parties = Party.objects.filter(owner=request.user)
-    return render(request, 'parties/index.html', { 'parties': parties })
+    my_parties = Party.objects.filter(owner=request.user)
+    other_parties = Party.objects.filter(rsvp__user_id=request.user.id)
+    combined_parties = my_parties | other_parties
+    
+    upcoming_parties = [p for p in combined_parties if p.time >= timezone.now()]
+    past_parties = [p for p in combined_parties if p.time < timezone.now()]
+
+    return render(request, 'parties/index.html', { 
+        'upcoming_parties': upcoming_parties, 
+        'past_parties': past_parties 
+    })
 
 def party_detail(request, invite_id):
     party = Party.objects.get(invite_id=invite_id)
