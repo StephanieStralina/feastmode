@@ -6,6 +6,7 @@ from django.urls import reverse
 from main_app.models import Party, Rsvp, Dish
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from .forms import RsvpForm, PartyForm, CustomUserCreationForm
 from .helpers import get_rsvp
 
@@ -32,12 +33,10 @@ def signup(request):
     return render(request, 'signup.html', context)
 
 def party_index(request):
-    my_parties = Party.objects.filter(owner=request.user)
-    other_parties = Party.objects.filter(rsvp__user_id=request.user.id)
-    combined_parties = my_parties | other_parties
+    parties = Party.objects.filter(rsvp__user_id=request.user.id)
     
-    upcoming_parties = [p for p in combined_parties if p.time >= timezone.now()]
-    past_parties = [p for p in combined_parties if p.time < timezone.now()]
+    upcoming_parties = [p for p in parties if p.time >= timezone.now()]
+    past_parties = [p for p in parties if p.time < timezone.now()]
 
     return render(request, 'parties/index.html', { 
         'upcoming_parties': upcoming_parties, 
@@ -58,7 +57,9 @@ class PartyCreate(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        Rsvp.objects.create(user=self.request.user, party=form.instance, status='A')
+        return response
 
 class PartyUpdate(LoginRequiredMixin, UpdateView):
     model = Party
@@ -92,13 +93,20 @@ class DishCreate(LoginRequiredMixin, CreateView):
     fields = ['name', 'description', 'category', 'claimed_by']
 
     def dispatch(self, request, *args, **kwargs):
-        self.invite_id = kwargs['invite_id']
+        self.party = Party.objects.get(invite_id=kwargs['invite_id'])
         return super().dispatch(request, *args, **kwargs)
     
     def form_valid(self, form):
-        form.instance.party = Party.objects.get(invite_id=self.invite_id)
+        form.instance.party = self.party
         return super().form_valid(form)
     
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        if self.request.user.id == self.party.owner.id:
+            form.fields['claimed_by'].queryset = User.objects.filter(rsvp__party__invite_id=self.party.invite_id)
+        else:
+            form.fields['claimed_by'].queryset = User.objects.filter(id=self.request.user.id)
+        return form
     
     def get_success_url(self, **kwargs):
         return reverse('party-detail', kwargs={ 'invite_id': self.invite_id })
