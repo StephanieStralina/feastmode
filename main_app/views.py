@@ -1,12 +1,11 @@
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import UserCreationForm 
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from main_app.models import Party, Rsvp, Dish
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import RsvpForm, PartyForm
+from .forms import RsvpForm, PartyForm, CustomUserCreationForm
 from .helpers import get_rsvp
 
 # Create your views here.
@@ -20,14 +19,14 @@ class Signin(LoginView):
 def signup(request):
     error_message = ''
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('home')
         else:
             error_message = 'Invalid sign up - try again'
-    form = UserCreationForm()
+    form = CustomUserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'signup.html', context)
 
