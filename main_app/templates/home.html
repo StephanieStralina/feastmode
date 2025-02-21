@@ -4,17 +4,18 @@
 {% endblock %}
 {% block content %}
 <section class="hero-img">
-    <div>
+    <div class="flex">
+        <img src='{% static 'images/logo.svg' %}'>
         <h1>HEY PARTY PEOPLE!</h1>
         <h4>Are you ready to go FEASTMODE?</h4>
-        <a href="{% url 'signin' %}">LEARN MORE</a>
+        <div class="flex-row">
+            <a href="{% url "party-create" %}" class="btn">Create a Party!</a>
+            <a href="{% url 'signin' %}" class="btn">LEARN MORE</a>
+        </div>
     </div>
-    <section>
-        <a href="{% url "party-create" %}">Create a Party!</a>
-    </section>
 </section>
 
-<section>
+<section class="flex">
     <form action="{% url "party-find" %}">
         {% csrf_token %}
         <input name="invite_id" maxlength=6 minlength=6 />
