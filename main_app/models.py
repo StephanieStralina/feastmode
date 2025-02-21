@@ -58,7 +58,7 @@ class Rsvp(models.Model):
   user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 
   def __str__(self):
-    return f"{self.status} - {self.user.username}"
+    return f"{self.status} - {self.user.username} - {self.party.invite_id}"
   
 class Dish(models.Model):
   party = models.ForeignKey(Party, on_delete=models.CASCADE)

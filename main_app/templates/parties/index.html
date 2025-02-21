@@ -8,14 +8,9 @@
     <h1>List of Parties!!! You made them!</h1>
 </section>
 <section>
-    {% for party in parties %}
-    <p><a href="{% url 'party-detail' party.invite_id %}">{{ party.name }}</a></p>
-    {% endfor %}
+    <a href="{% url "party-create" %}">Create a Party!</a>
 </section>
-
-
-
-
-
+{% include 'parties/party-list.html' with title='Upcoming Parties' parties=upcoming_parties %}
+{% include 'parties/party-list.html' with title='Past Parties' parties=past_parties %}
 
 {% endblock %}
