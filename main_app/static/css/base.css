@@ -9,9 +9,9 @@ html {
 }
 
 :root {
+    --color-neutral: #f2f2f2;
     --color-accent: #850d09;
     --color-primary: #fff6e7;
-    --color-neutral: #f2f2f2;
     --color-secondary: #f9ede5;
     --color-dark: #000333;
 }
@@ -45,12 +45,16 @@ header {
 }
 
 nav {
-    background-color: var(--color-dark);
+    background: transparent;
     color: var(--color-neutral);
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    padding: 1vmin 0 1vmin 0;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 1rem 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 ul {
@@ -63,6 +67,7 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
+    z-index: 0;
 }
 
 .centered {
@@ -76,13 +81,14 @@ h2 {
 
 nav a {
     text-decoration: none;
-    color: var(--color-neutral);
+    color: var(--color-accent);
     font-weight: 600;
     font-size: 16px;
+    transition: 0.3s;
 }
 
 nav a:hover {
-    color: var(--color-accent);
+    color: var(--color-dark);
 }
 
 nav ul {
@@ -96,31 +102,77 @@ nav li {
     padding: 5px 8px;
 }
 
+.nav-logo {
+    width: 12rem;
+    cursor:pointer;
+}
+
+/* button (default) */
+
 .btn {
-    background-color: var(--color-dark);
+    background-color: var(--color-accent);
     color: var(--color-neutral);
     padding: 8px 16px;
     border-radius: 6px;
     text-decoration: none;
     border: none;
+    transition: 0.3s;
 }
 
 .btn:hover {
-    background-color: var(--color-accent);
+    background-color: var(--color-dark);
 }
 
 .btn-override {
     border: none;
     outline: none;
     background-color: transparent;
-    color: var(--color-neutral);
+    cursor: pointer;
+    color: var(--color-accent);
     font: inherit;
     font-weight: 600;
+    transition: 0.3s;
 }
 
 .btn-override:hover {
-    color: var(--color-accent);
+    color: var(--color-dark);
 }
+
+/* button style 1 */
+
+.btn.style1 {
+    background-color: var(--color-accent);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.btn.style1:hover {
+    background-color: var(--color-dark);
+}
+
+/* button style 2 */
+
+.btn.style2 {
+    background-color: #dbdbdb;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s;
+  }
+  
+  .btn.style2:hover {
+    background-color: var(--color-accent);
+    color: #fff;
+  }
+
 
 .flex-column {
     display: flex;
@@ -137,12 +189,14 @@ nav li {
     background-image: linear-gradient(rgba(255, 246, 231, 0.375),
             rgba(255, 246, 231, 1)),
         url('../images/Hero.jpg');
-    height: 50%;
+    height: 70vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
     padding-bottom: 3vmin;
+    margin-top: -80px;
+    z-index: 0;
 }
 
 .hero-img img {
@@ -215,4 +269,28 @@ nav li {
     background-color: var(--color-dark);
     height: 35vmin;
     width: 35vmin;
+}
+
+/* divider */
+
+.or-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.or-divider hr {
+    flex-grow: 1;
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+}
+
+.or-divider span {
+    padding: 0 10px;
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 600;
 }
