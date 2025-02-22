@@ -17,59 +17,50 @@
   margin-bottom: 32px;
 }
 
+.signup span {
+  font-size: 0.9rem;
+  color: #947e7e;
+  margin-bottom: 0.4rem;
+}
+
+.signup li {
+  font-size: 0.9rem;
+  color: #947e7e;
+  margin-bottom: 4px;
+}
+
+.signup table {
+  width: 100%;
+  border-collapse: separate;
+  table-layout: fixed;
+}
+
+.signup tr {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 0.4rem; 
+}
+
+.signup tr:last-child {
+  margin-bottom: 1.2rem;
+}
+
+.signup td {
+  width: 100%;
+}
+
 .signup label {
-  display: block;
   font-size: 0.9rem;
   font-weight: 600;
-  margin-bottom: 4px;
   color: #333;
+  margin-bottom: 4px;
 }
 
 .signup input {
   width: 100%;
   padding: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 0.4rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
-
-/* button */
-
-.btn.submit {
-  background-color: var(--color-accent);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  width: 100%;
-  transition: 0.3s;
-}
-
-.btn.submit:hover {
-  background-color: var(--color-dark);
-}
-
-/* divider */
-
-.or-divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  margin-bottom: 32px;
-}
-
-.or-divider hr {
-  flex-grow: 1;
-  border: none;
-  height: 1px;
-  background-color: #ccc;
-}
-
-.or-divider span {
-  padding: 0 10px;
-  font-size: 0.9rem;
-  color: #555;
-  font-weight: 600;
 }
