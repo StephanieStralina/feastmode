@@ -40,7 +40,7 @@
 
 .party-detail-sub-container {
     display: flex;
-    width: 80%;
+    width: 60%;
     padding: 16px 16px 32px 16px;
     margin-bottom: 1.2rem;
     background: #ffffff;
@@ -57,7 +57,7 @@
 
 .dish-detail-sub-container {
     display: flex;
-    width: 80%;
+    width: 60%;
     padding: 16px 16px 32px 16px;
     margin-bottom: 1.2rem;
     background: #ffffff;
@@ -132,13 +132,13 @@
         flex-direction: column;
         align-items: center;
         gap: 4vmin;
-        width: 40vmin;
+        width: 100%;
         height: auto;
         flex-wrap: nowrap;
     }
 
     .dish-container {
-        width: 30vmin;
-        height: 40vmin;
+        width: 50vmin;
+        height: 60vmin;
     }
 }
