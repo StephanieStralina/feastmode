@@ -33,11 +33,15 @@
     <a href="{% url "signup" %}" class="btn">Sign Up</a>
     {% endif %}
 </section>
-<section>
-    <h1>Who's coming?</h1>
+<section class="flex-column">
+    <h1>RSVPs</h1>
     <ul>
         {% for rsvp in party.rsvp_set.all %}
-        <li>{{ rsvp.get_status_display }} - {{ rsvp.user.username }}</li>
+            {% if rsvp.user.id == party.owner.id %}
+                <li>Host - {{ rsvp.user.username}}</li>
+            {% else %}
+            <li> {{ rsvp.user.username }} ({{ rsvp.get_status_display }})</li>
+            {% endif %}
         {% endfor %}
     </ul>
 </section>

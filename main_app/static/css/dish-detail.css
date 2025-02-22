@@ -1,0 +1,23 @@
+.dish-img {
+    width: 40%;
+    height: 40%;
+    border-radius: 8px;
+}
+
+.dish-txt {
+    width: 40%;
+    background-color: var(--color-secondary);
+    border-radius: 8px;
+    margin-top: 2vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2vmin;
+    padding: 0 2vmin 2vmin 2vmin;
+    text-align: center;
+}
+
+.dish-txt p {
+    text-decoration: underline;
+    font-size: 2.5vmin;
+}
