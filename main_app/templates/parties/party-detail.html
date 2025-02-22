@@ -1,8 +1,10 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block head %}
+    <link rel="stylesheet" href="{% static 'css/party-detail.css' %}">
 {% endblock %} 
 {% block content %}
+<div class="party-detail">
 <section>
     <h1>{{party.owner.first_name}}'s {{ party.name }}</h1>
 </section>
@@ -39,17 +41,23 @@
         {% endfor %}
     </ul>
 </section>
-<section>
+<section class="flex-column dishes-section">
     <h1>Dishes</h1>
-    <ul>
+    <div class="dishes-wrapper flex-row">
         {% for dish in party.dish_set.all %}
-        <li>
-            <a href="{% url "dish-detail" party.invite_id dish.id %}">{{ dish.name }}</a>
-            <a href="{% url "dish-update" party.invite_id dish.id %}">Edit</a>
-            <a href="{% url "dish-delete" party.invite_id dish.id %}">Delete</a>
-        </li>
+            <div class="dish-container flex-column">
+                <div class="dish-img-wrapper">
+                    <a href="{% url "dish-detail" party.invite_id dish.id %}"><img src="{{ dish.img_url }}" class="dish-img"></a>
+                </div>
+                <a href="{% url "dish-detail" party.invite_id dish.id %}">{{ dish.name }}</a>
+                <div class="flex-row">
+                    <a href="{% url "dish-update" party.invite_id dish.id %}"><img src="{% static '../static/images/edit.svg' %}"></a>
+                    <a href="{% url "dish-delete" party.invite_id dish.id %}"><img src="{% static '../static/images/delete.svg' %}"></a>
+                </div>
+            </div>
         {% endfor %}
-    </ul>
-    <a href="{% url "dish-create" party.invite_id %}">Add a new dish</a>
+    </div>
 </section>
+<a href="{% url "dish-create" party.invite_id %}" class="btn">Add a new dish</a>
+</div>
 {% endblock %}
