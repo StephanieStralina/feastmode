@@ -5,12 +5,11 @@
 {% block content %}
 <section class="hero-img">
     <div class="flex-column hero-txt">
-        {% comment %} <img src='{% static 'images/logo.svg' %}'> {% endcomment %}
         <h1>HEY PARTY PEOPLE!</h1>
         <h4>Are you ready to go <i>FEASTMODE?</i></h4>
         <div class="flex-row hero-link">
             <a href="{% url "party-create" %}" class="btn">Create a Party!</a>
-            <a href="{% url 'signin' %}" class="btn">Learn More</a>
+            <a href="#app-intro" class="btn">Learn More</a>
         </div>
     </div>
 </section>
@@ -25,29 +24,30 @@
     </form>
 </section>
 
-<section class="landing-txt flex-row">
+<section class="landing-txt">
     <div>
-        There’s nothing quite like the joy of gathering with friends over a table full of 
-        homemade dishes, each one infused with love, memories, and a touch of personal flair. 
-        FeastMode is about more than just meals; it's are a celebration of togetherness, a chance to 
-        slow down and truly connect. In our fast-paced world, where scheduling dinners can feel 
-        like a logistical nightmare, potlucks offer a beautifully simple solution. Everyone 
-        contributes, everyone enjoys, and no one carries the weight of hosting alone. 
-        From hearty family recipes to last-minute store-bought treats (because, let’s be real, 
-        we’ve all been there), every dish tells a story, and every gathering strengthens bonds. 
-        Whether it’s a cozy get-together with lifelong friends or a welcoming space to meet 
-        new faces, FeastMode is here to remind us that sharing food is one of the most genuine ways to 
-        nurture relationships.
-    </div>
-    <div>
-        <img src="{% static '../static/images/party1.jpg' %}" class="landing-img">
+        <p>
+            <img src="{% static '../static/images/party1.jpg' %}" class="landing-img float-right">
+            There’s nothing quite like the joy of gathering with friends over a table full of 
+            homemade dishes, each one infused with love, memories, and a touch of personal flair. 
+            FeastMode is about more than just meals; it's are a celebration of togetherness, a chance to 
+            slow down and truly connect. In our fast-paced world, where scheduling dinners can feel 
+            like a logistical nightmare, potlucks offer a beautifully simple solution. Everyone 
+            contributes, everyone enjoys, and no one carries the weight of hosting alone. 
+            From hearty family recipes to last-minute store-bought treats (because, let’s be real, 
+            we’ve all been there), every dish tells a story, and every gathering strengthens bonds. 
+            Whether it’s a cozy get-together with lifelong friends or a welcoming space to meet 
+            new faces, FeastMode is here to remind us that sharing food is one of the most genuine ways to 
+            nurture relationships.
+        </p>
     </div>
 </section>
-<section class="landing-txt flex-row">
-    <div>
-        <img src="{% static '../static/images/party2.jpg' %}" class="landing-img">
-    </div>
-    <div>At FeastMode, our goal is to help make hosting easier, more organized, and stress-free. 
+
+<section class="landing-txt">
+    <div>  
+    <p>
+        <img src="{% static '../static/images/party2.jpg' %}" class="landing-img float-left">
+        At FeastMode, our goal is to help make hosting easier, more organized, and stress-free. 
         Say goodbye to endless text chains and forgotten dishes! Our app streamlines the planning 
         process, allowing guests to sign up for what they’ll bring, see what’s still needed, and 
         coordinate seamlessly with the group. Whether you’re organizing a casual Sunday brunch, 
@@ -56,21 +56,46 @@
         on what really matters—enjoying good food, laughter, and meaningful moments with your 
         favorite people. Hosting a potluck has never been easier, and bringing friends together 
         has never been more fun!
+    </p>
     </div>
 </section>
+
 <section class="testimonials flex-column">
-    <h2>Testimonaials</h2>
-    <div class="flex-row testimonial-container">
+    <h2>Testimonials</h2>
+    <div class="testimonial-container">
         <div class="inner-testimonial">
-            Text1
+            <p>"This app made planning our neighborhood potluck so easy! Everyone knew what to bring, 
+            and we had the most amazing spread without any stress." <br><span class="name flex-row">- Sarah M.</span></p>
         </div>
         <div class="inner-testimonial">
-            Text2
+            <p>"I love how organized everything is now. No more last-minute grocery store runs 
+            because someone forgot to bring a dish!" <br><span class="name flex-row">- James L.</span></p>
         </div>
         <div class="inner-testimonial">
-            Text 3
+            <p>"Hosting has never been this effortless. I can actually enjoy the party instead of 
+            stressing over the details—highly recommend!" <br><span class="name flex-row">- Emily R.</span></p>
         </div>   
     </div>
+</section>
+
+<section class="flex-column signup-section">
+    <h2>Ready to Host?</h2>
+    <a href="{% url 'signup' %}" class="btn">Sign up now!</a>
+</section>
+
+<section class="flex-column" id="app-intro">
+    <h2>How FeastMode works:</h2>
+        <p>FeastMode takes the stress out of organizing a potluck by making the process seamless and 
+            user-friendly. Here’s how it works:</p>
+        <ul class="app-list">
+            <li><span>Create a Party</span> – The host sets up the potluck event in the app and gets a unique party code.</li>
+            <li><span>Send the Code</span> – Share the code with guests so they can easily join the party.</li>
+            <li><span>Sign Up & RSVP</span> – Guests can confirm their attendance and see what’s needed.</li>
+            <li><span>Claim or Add a Dish</span> – The host can propose dishes, and guests can claim an option or add their own contribution.</li>
+            <li><span>Describe Your Dish</span> – Guests can enter details about their dish, including ingredients and allergens, 
+                so everyone knows what to expect.</li>
+            <li><span>Enjoy a Stress-Free Potluck</span> – With everything organized in one place, you can focus on the fun, not the logistics!</li>
+        </ul>
 </section>
 </div>
 

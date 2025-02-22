@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 *,
@@ -104,7 +105,7 @@ nav li {
 
 .nav-logo {
     width: 12rem;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 /* button (default) */
@@ -166,12 +167,12 @@ nav li {
     cursor: pointer;
     width: 100%;
     transition: 0.3s;
-  }
-  
-  .btn.style2:hover {
+}
+
+.btn.style2:hover {
     background-color: var(--color-accent);
     color: #fff;
-  }
+}
 
 
 .flex-column {
@@ -187,9 +188,9 @@ nav li {
 
 .hero-img {
     background-image: linear-gradient(rgba(255, 246, 231, 0.375),
-            rgba(255, 246, 231, 1)),
+        rgba(255, 246, 231, 1)),
         url('../images/Hero.jpg');
-    height: 70vh;
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -205,11 +206,11 @@ nav li {
 }
 
 .hero-txt {
-    padding: 2vmin 0 0 0;
+    padding: 12vmin 0 12vmin 0;
 }
 
 .hero-txt h1 {
-    font-size: 6vmin;
+    font-size: 8vmin;
     margin: 6vmin 0 0 0;
 }
 
@@ -225,6 +226,8 @@ nav li {
 
 .hero-link a {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 2.5vmin;
+    padding: 1vmin 2vmin 1vmin 2vmin;
 }
 
 .join-party {
@@ -242,17 +245,25 @@ nav li {
 .landing-txt {
     width: 80%;
     align-self: center;
-    margin-bottom: 6vmin;
     font-size: 2vmin;
     line-height: 3.5vmin;
-    gap: 2vmin;
+}
+
+.float-right {
+    float: right;
+    margin: 0 0 0 3vmin;
+}
+
+.float-left {
+    float: left;
+    margin: 0 3vmin 0 0;
 }
 
 .landing-img {
     max-width: 60vmin;
 }
 
-.testimonial {
+.testimonials {
     margin-top: 2vmin;
     align-self: center;
     width: 80%;
@@ -262,13 +273,74 @@ nav li {
     gap: 4vmin;
     justify-content: center;
     display: flex;
+    flex-direction: row;
     margin-top: 2vmin;
+    width: 100%;
 }
 
 .inner-testimonial {
     background-color: var(--color-dark);
-    height: 35vmin;
-    width: 35vmin;
+    color: var(--color-neutral);
+    height: 36vmin;
+    width: 36vmin;
+    display: flex;
+}
+
+.inner-testimonial p {
+    font-size: 2.2vmin;
+    align-content: flex-start;
+    padding: 4vmin 4vmin 0vmin 4vmin;
+}
+
+.name {
+    justify-content: flex-end;
+    margin-top: 1vmin;
+    font-style: italic;
+}
+
+.signup-section {
+    margin: 4vmin 0 4vmin 0;
+    padding: 2vmin 0 0 0;
+    background-image: linear-gradient(rgba(255, 246, 231, 1), rgba(255, 246, 231, 0.375),
+        rgba(255, 246, 231, 1)),
+        url('../images/divimg.jpg');
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 0;
+}
+
+.signup-section h2 {
+    font-style: italic;
+}
+
+.signup-section .btn {
+    font-size: 3vmin;
+}
+
+#app-intro {
+    width: 80%;
+}
+
+#app-intro p {
+    font-size: 2vmin;
+}
+
+.app-list {
+    width: 70%;
+    font-size: 2vmin;
+}
+
+.app-list li {
+    margin-bottom: 1vmin;
+    list-style: disc;
+}
+
+.app-list span {
+    text-decoration: underline;
 }
 
 /* divider */
@@ -293,4 +365,12 @@ nav li {
     font-size: 0.9rem;
     color: #555;
     font-weight: 600;
+}
+
+@media screen and (max-width: 1023px) {
+    .testimonial-container {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 }
