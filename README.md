@@ -7,7 +7,7 @@
 </div>
 
 **🍕 A Snack Squad Production 🍕**
-**[Stephanie Stralina](https://www.linkedin.com/in/maxhimmel/)**
+**[Stephanie Stralina](https://www.linkedin.com/in/stephaniestralina/)**
 **[Max Himmel](https://www.linkedin.com/in/maxhimmel/)**
 **[Sejin Park](https://www.linkedin.com/in/maxhimmel/)**
 **[Ali Sakibou](https://www.linkedin.com/in/maxhimmel/)**
