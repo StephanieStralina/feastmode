@@ -6,7 +6,7 @@
 {% block content %}
     <div class="party-detail-container">
         <section class="party-detail-title">
-            <h1>{{party.owner.first_name}}'s {{ party.name }}</h1>
+            <h1>{{ party.name }}</h1>
         </section>
         <section class="party-detail-sub-container">
             <h1>Information</h1>
@@ -40,18 +40,18 @@
             <ul>
                 {% for rsvp in party.rsvp_set.all %}
                     {% if rsvp.user.id == party.owner.id %}
-                        <li>Host - {{ rsvp.user.username}}</li>
+                        <li><i>Hosted by - {{ rsvp.user.username}}</i></li>
                     {% else %}
                     <li> {{ rsvp.user.username }} ({{ rsvp.get_status_display }})</li>
                     {% endif %}
                 {% endfor %}
             </ul>
         </section>
-        <section class="party-detail-sub-container dishes-section">
+        <section class="dish-detail-sub-container dishes-section">
             <h1>Dishes</h1>
             <div class="dishes-wrapper">
                 {% for dish in party.dish_set.all %}
-                    <div class="dish-container flex-column">
+                    <div class="dish-container">
                         <div class="dish-img-wrapper">
                             <a href="{% url "dish-detail" party.invite_id dish.id %}"><img src="{{ dish.img_url }}" class="dish-img"></a>
                         </div>

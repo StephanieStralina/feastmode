@@ -117,11 +117,20 @@ class DishUpdate(LoginRequiredMixin, UpdateView):
     fields = '__all__'
 
     def dispatch(self, request, *args, **kwargs):
-        self.invite_id = kwargs['invite_id']
+        self.party = Party.objects.get(invite_id=kwargs['invite_id'])
         return super().dispatch(request, *args, **kwargs)
     
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        if self.request.user.id == self.party.owner.id:
+            form.fields['claimed_by'].queryset = User.objects.filter(rsvp__party__invite_id=self.party.invite_id)
+        else:
+            form.fields['claimed_by'].queryset = User.objects.filter(id=self.request.user.id)
+        return form
+    
     def get_success_url(self, **kwargs):
-        return reverse('party-detail', kwargs={ 'invite_id': self.invite_id })
+        invite_id = self.kwargs.get('invite_id')
+        return reverse('party-detail', kwargs={ 'invite_id': invite_id })
 
 class DishDelete(LoginRequiredMixin, DeleteView):
     model = Dish
