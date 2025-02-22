@@ -245,10 +245,18 @@ nav li {
 .landing-txt {
     width: 80%;
     align-self: center;
-    margin-bottom: 6vmin;
     font-size: 2vmin;
     line-height: 3.5vmin;
-    gap: 2vmin;
+}
+
+.float-right {
+    float: right;
+    margin: 0 0 0 3vmin;
+}
+
+.float-left {
+    float: left;
+    margin: 0 3vmin 0 0;
 }
 
 .landing-img {
