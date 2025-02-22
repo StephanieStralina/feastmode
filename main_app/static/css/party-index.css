@@ -22,9 +22,10 @@
 .party-index {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: 450px;
   margin-top: 20px;
+  margin-bottom: 2vmin;
 }
 .party-index h1 {
   text-align: left;

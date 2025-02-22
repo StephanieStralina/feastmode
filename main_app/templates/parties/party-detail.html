@@ -4,12 +4,17 @@
 {% endblock %} 
 {% block content %}
 <section>
-    <h1>{{ party.name }}'s detail page</h1>
+    <h1>{{party.owner.first_name}}'s {{ party.name }}</h1>
+</section>
+<section>
+    <p>When | {{party.time}}</p>
+    <p>Where | {{party.location}}</p>
+    <p>Wear | {{party.dresscode}}</p>
 </section>
 <section>
     {% if party.owner.id == user.id %}
-    <p>A little box with the party id</p>
-    <a href ="{% url 'party-update' party.invite_id%}">Edit</a>
+    <p>Invitation Code: {{party.invite_id}}</p>
+    <a href ="{% url 'party-update' party.invite_id%}" class="btn">Edit Party</a>
     {% elif user.is_authenticated %}
     <form
         action="{% url 'add-rsvp' party.invite_id %}"
@@ -21,7 +26,9 @@
         <button type="submit" class="btn submit">RSVP</button>
     <form>
     {% else %}
-    <p>Link to login/signup</p>
+    <p>Not logged in? Don't have an account?</p>
+    <a href="{% url "signin" %}" class="btn">Log In</a>
+    <a href="{% url "signup" %}" class="btn">Sign Up</a>
     {% endif %}
 </section>
 <section>

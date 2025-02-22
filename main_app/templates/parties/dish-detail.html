@@ -4,7 +4,8 @@
 {% endblock %} 
 {% block content %}
 <section>
-    <h1>{{ dish.name }}'s detail</h1>
+    <h1>{{ dish.name }}</h1>
+    <img src="{{dish.img_url}}">
     <p>Dish name: {{ dish.description }}</p>
     <p>Category: {{ dish.category }}</p>
     <p>Claimed by: {{ dish.claimed_by }}</p>
