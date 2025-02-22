@@ -5,12 +5,11 @@
 {% block content %}
 <section class="hero-img">
     <div class="flex-column hero-txt">
-        {% comment %} <img src='{% static 'images/logo.svg' %}'> {% endcomment %}
         <h1>HEY PARTY PEOPLE!</h1>
         <h4>Are you ready to go <i>FEASTMODE?</i></h4>
         <div class="flex-row hero-link">
             <a href="{% url "party-create" %}" class="btn">Create a Party!</a>
-            <a href="{% url 'signin' %}" class="btn">Learn More</a>
+            <a href="#app-intro" class="btn">Learn More</a>
         </div>
     </div>
 </section>
@@ -74,6 +73,24 @@
             stressing over the details—highly recommend!" <br><span class="name flex-row">- Emily R.</span></p>
         </div>   
     </div>
+</section>
+<section class="flex-column signup-section">
+    <h2>Ready to Host?</h2>
+    <a href="{% url 'signup' %}" class="btn">Sign up now!</a>
+</section>
+<section class="flex-column" id="app-intro">
+    <h2>How FeastMode works:</h2>
+        <p>FeastMode takes the stress out of organizing a potluck by making the process seamless and 
+            user-friendly. Here’s how it works:</p>
+        <ul class="app-list">
+            <li><span>Create a Party</span> – The host sets up the potluck event in the app and gets a unique party code.</li>
+            <li><span>Send the Code</span> – Share the code with guests so they can easily join the party.</li>
+            <li><span>Sign Up & RSVP</span> – Guests can confirm their attendance and see what’s needed.</li>
+            <li><span>Claim or Add a Dish</span> – The host can propose dishes, and guests can claim an option or add their own contribution.</li>
+            <li><span>Describe Your Dish</span> – Guests can enter details about their dish, including ingredients and allergens, 
+                so everyone knows what to expect.</li>
+            <li><span>Enjoy a Stress-Free Potluck</span> – With everything organized in one place, you can focus on the fun, not the logistics!</li>
+        </ul>
 </section>
 </div>
 
