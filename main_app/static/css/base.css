@@ -195,7 +195,6 @@ nav li {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    padding-bottom: 3vmin;
     margin-top: -80px;
     z-index: 0;
 }
@@ -230,7 +229,7 @@ nav li {
 }
 
 .join-party {
-    margin: 1vmin 0 6vmin 0;
+    margin: 4vmin 0 6vmin 0;
     font-size: 2vmin;
 }
 
