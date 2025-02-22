@@ -90,7 +90,7 @@ def add_rsvp(request, invite_id):
 
 class DishCreate(LoginRequiredMixin, CreateView):
     model = Dish
-    fields = ['name', 'description', 'category', 'claimed_by']
+    fields = ['name', 'img_url', 'description', 'category', 'claimed_by']
 
     def dispatch(self, request, *args, **kwargs):
         self.party = Party.objects.get(invite_id=kwargs['invite_id'])
@@ -109,7 +109,8 @@ class DishCreate(LoginRequiredMixin, CreateView):
         return form
     
     def get_success_url(self, **kwargs):
-        return reverse('party-detail', kwargs={ 'invite_id': self.invite_id })
+        invite_id = self.kwargs.get('invite_id')
+        return reverse('party-detail', kwargs={ 'invite_id': invite_id })
 
 class DishUpdate(LoginRequiredMixin, UpdateView):
     model = Dish

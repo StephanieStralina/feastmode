@@ -1,13 +1,17 @@
-{% extends 'base.html' %} 
-{% load static %} 
-{% block head %}
-{% endblock %} 
-{% block content %}
-<section>
-    <h1>{{ dish.name }}'s detail</h1>
-    <p>Dish name: {{ dish.description }}</p>
-    <p>Category: {{ dish.category }}</p>
-    <p>Claimed by: {{ dish.claimed_by }}</p>
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/dish-detail.css' %}" />
+{% endblock %} {% block content %}
+<section class="flex-column">
+  <h1>{{ dish.name }}</h1>
+  <img src="{{dish.img_url}}" class="dish-img" />
+  <div class="dish-txt">
+    <p>Dish name:</p>
+    {{ dish.description }}
+    <p>Category:</p>
+    {{ dish.get_category_display }}
+    <p>Claimed by:</p>
+    {{ dish.claimed_by }}
+  </div>
 </section>
 
 {% endblock %}

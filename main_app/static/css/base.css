@@ -252,11 +252,13 @@ nav li {
 .float-right {
     float: right;
     margin: 0 0 0 3vmin;
+    border-radius: 8px;
 }
 
 .float-left {
     float: left;
     margin: 0 3vmin 0 0;
+    border-radius: 8px;
 }
 
 .landing-img {
@@ -284,6 +286,7 @@ nav li {
     height: 36vmin;
     width: 36vmin;
     display: flex;
+    border-radius: 8px;
 }
 
 .inner-testimonial p {
