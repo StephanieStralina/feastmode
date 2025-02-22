@@ -1,6 +1,6 @@
 <div align="center" id="header">
  
-# Scratch Notes
+# FeastMode
 
 <div id="header" align="center">
   <img src="" width="800" height="400" alt="banner">
@@ -10,17 +10,15 @@
 **[Stephanie Stralina](https://www.linkedin.com/in/stephaniestralina/)**
 **[Max Himmel](https://www.linkedin.com/in/maxhimmel/)**
 **[Sejin Park](https://www.linkedin.com/in/maxhimmel/)**
-**[Ali Sakibou](https://www.linkedin.com/in/maxhimmel/)**
+**[Ali Sakibou](https://www.linkedin.com/in/ali-sakibou-73771188/)**
 
-#### [DEMO HERE](https://feastmode-c7c27bc8f641.herokuapp.com/)
+#### [DEMO FEASTMODE HERE](https://feastmode-c7c27bc8f641.herokuapp.com/)
 
 </div>
 
 ## :pencil: Description
 
-I love dancing! And if you're anything like me then you're constantly Shazaming tracks when you're out-and-about and then compiling them into playlists. I wonder how DJs make their set lists...
-
-**Scratch Notes** is handy note taking app that helps design a potential set list for any occasion. Search Spotify, drag and drop tracks, then link them together!
+**FeastMode** is a simple and intuitive app designed to make potluck planning effortless. Hosts can create an event, generate a unique code, and invite guests to RSVP, claim suggested dishes, or add their own contributions. With built-in dish descriptions, guests can easily see ingredients and allergens, reducing the need for last-minute questions. Whether you're planning a casual gathering or a big celebration, FeastMode makes organizing and sharing meals with friends easier than ever!
 
 ## :computer: Technologies Used
 
@@ -31,8 +29,12 @@ I love dancing! And if you're anything like me then you're constantly Shazaming 
 
 ## :art: References
 
-- [https://feastmode-c7c27bc8f641.herokuapp.com/](https://feastmode-c7c27bc8f641.herokuapp.com/)
+- Images used in this project come from [Unsplash](https://unsplash.com/)
+- Icons for this project come from [Google Fonts](https://fonts.google.com/)
 
 ## :fast_forward: Upcoming Features
 
-- [ ] What other features do we wanna add?!
+- [ ] Badges for amount of parties hosted/attended, most variety of dishes, and other superlative style events
+- [ ] AI Dish suggestion generator for those who need
+help getting ideas for suitable options
+- [ ] Commenting on dishes so guests can ask questions or ask for recipes post-party
