@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
+  <link rel="stylesheet" href="{% static 'css/signin.css' %}">
 {% endblock %}
 {% block content %}
-    <div>
-      <h1>Sign In</h1>
+  <section class="signin-container">
+    <form action="{% url 'home' %}" method="post" class="signin">
+        <h1>Sign In</h1>
+        {% csrf_token %} 
+        {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next }}" />
+        <button type="submit" class="btn style1">SIGN IN</button>
+    </form>
+  </section>
+  <section class="signin-container">
+    <div class="signin">
+      <div class="or-divider">
+        <hr><span>or</span><hr>
+      </div>
+    <button type="button" class="btn style2" onclick="window.location.href='{% url 'signup' %}'">SIGN UP</button>
     </div>
-    <section>
-      <form action="{% url 'home' %}" method="post" class="login">
-          <h1>Login</h1>
-          {% csrf_token %} 
-          {{ form.as_p }}
-          <input type="hidden" name="next" value="{{ next }}" />
-          <button type="submit" class="btn submit">Login</button>
-      </form>
-    </section>
+  </section>
 {% endblock %}

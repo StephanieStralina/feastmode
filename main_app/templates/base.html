@@ -14,6 +14,9 @@
   <body>
     <header>
       <nav>
+        <a href="/">
+          <img src='{% static 'images/logo.svg' %}' class='nav-logo'>
+        </a>
         <ul>
           <li><a href="{% url 'home' %}">Home</a></li>
           {% if user.is_authenticated %}

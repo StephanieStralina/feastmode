@@ -1,16 +1,19 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block head %}
+    <link rel="stylesheet" href="{% static 'css/party-index.css' %}">
 {% endblock %} 
 {% block content %}
 
-<section>
-    <h1>List of Parties!!! You made them!</h1>
-</section>
-<section>
+<section class="party-index">
+    <h1>💃List of Parties🕺</h1>
     <a href="{% url "party-create" %}">Create a Party!</a>
 </section>
-{% include 'parties/party-list.html' with title='Upcoming Parties' parties=upcoming_parties %}
-{% include 'parties/party-list.html' with title='Past Parties' parties=past_parties %}
+<section class="party-index-sub-container">
+    {% include 'parties/party-list.html' with title='Upcoming Parties' parties=upcoming_parties %}
+</section>
+<section class="party-index-sub-container">
+    {% include 'parties/party-list.html' with title='Past Parties' parties=past_parties %}
+</section>
 
 {% endblock %}
