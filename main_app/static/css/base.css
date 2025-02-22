@@ -252,7 +252,7 @@ nav li {
     max-width: 60vmin;
 }
 
-.testimonial {
+.testimonials {
     margin-top: 2vmin;
     align-self: center;
     width: 80%;
@@ -262,14 +262,32 @@ nav li {
     gap: 4vmin;
     justify-content: center;
     display: flex;
+    flex-direction: row;
     margin-top: 2vmin;
+    width: 100%;
 }
 
 .inner-testimonial {
     background-color: var(--color-dark);
-    height: 35vmin;
-    width: 35vmin;
+    color: var(--color-neutral);
+    height: 36vmin;
+    width: 36vmin;
+    display: flex;
 }
+
+.inner-testimonial p {
+    font-size: 2.5vmin;
+    align-content: flex-start;
+    padding: 4vmin 4vmin 0vmin 4vmin; 
+}
+
+.name {
+    justify-content: flex-end;
+    margin-top: 1vmin;
+    font-style: italic;
+}
+
+
 
 /* divider */
 
@@ -293,4 +311,12 @@ nav li {
     font-size: 0.9rem;
     color: #555;
     font-weight: 600;
+}
+
+@media screen and (max-width: 1023px) {
+    .testimonial-container {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 }
