@@ -4,15 +4,13 @@
   <link rel="stylesheet" href="{% static 'css/form.css' %}">
 {% endblock %} 
 {% block content %}
-  <section class="form-container form-title">
-    {% if party %}
-    <h1>Edit {{ party.name }}</h1>
-    {% else %}
-    <h1>Add a Party</h1>
-    {% endif %}
-  </section>
   <section class="form-container">
     <form action="" method="post" class="form-format">
+      {% if party %}
+      <h1>Edit {{ party.name }}</h1>
+      {% else %}
+      <h1>Add a Party</h1>
+      {% endif %}
       {% csrf_token %}
       <table>
         {{ form.as_table }}

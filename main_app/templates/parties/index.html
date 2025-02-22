@@ -4,17 +4,16 @@
     <link rel="stylesheet" href="{% static 'css/party-index.css' %}">
 {% endblock %} 
 {% block content %}
-<div class="flex-column">
-    <section class="party-index">
-        <h1>💃List of Parties🕺</h1>
-        <a href="{% url "party-create" %}">Create a Party!</a>
-    </section>
-    <section class="party-index-sub-container">
-        {% include 'parties/party-list.html' with title='Upcoming Parties' parties=upcoming_parties %}
-    </section>
-    <section class="party-index-sub-container">
-        {% include 'parties/party-list.html' with title='Past Parties' parties=past_parties %}
-    </section>
-</div>
-
+    <div class="flex-column">
+        <section class="party-index-title">
+            <h1>💃  My Parties🕺</h1>
+            <a href="{% url "party-create" %}" class="btn">Create a Party!</a>
+        </section>
+        <section class="party-index-sub-container">
+            {% include 'parties/party-list.html' with title='Upcoming Parties' parties=upcoming_parties %}
+        </section>
+        <section class="party-index-sub-container">
+            {% include 'parties/party-list.html' with title='Past Parties' parties=past_parties %}
+        </section>
+    </div>
 {% endblock %}

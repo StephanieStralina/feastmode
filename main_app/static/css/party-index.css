@@ -1,47 +1,27 @@
-.party-index-container {
+.party-index-title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  background-image: linear-gradient(rgb(255 255 255 / 34%), rgba(255, 246, 231, 1)), url(../images/divimg.jpg);
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
-.party-index-sub-container {
-  display: flex;
-  width: 450px;
-  padding: 16px;
-  margin-bottom: 12px;
-  background: #f2f2f2;
-  border: 1px solid #c1c1c1;
-  border-radius: 4px;
-
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.party-index {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 450px;
-  margin-top: 20px;
-  margin-bottom: 2vmin;
-}
-.party-index h1 {
+.party-index-title h1 {
   text-align: left;
   font-size: 2.4rem;
-  margin-bottom: 32px;
 }
 
-.party-index label {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 4px;
-  color: #333;
+.flex-column .party-index-title {
+  margin-top: -80px;
+  padding-top: 6rem;
+  padding-bottom: 2rem;
 }
 
-.party-index a {
+.party-index-title a {
   display: inline-block;
   margin-top: 10px;
   padding: 10px 20px;
@@ -52,31 +32,20 @@
   transition: 0.3s;
 }
 
-.party-index a:hover {
-  background-color: var(--color-dark);
-}
-
-.party-index input {
-  width: 100%;
-  padding: 10px;
+.party-index-sub-container {
+  display: flex;
+  width: 450px;
+  padding: 16px;
   margin-bottom: 12px;
-  border: 1px solid #ccc;
+  background: #ffffff;
+  border: 1px solid #c1c1c1;
   border-radius: 4px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-/* button */
-
-.btn.submit {
-  background-color: var(--color-accent);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  width: 100%;
-  transition: 0.3s;
-}
-
-.btn.submit:hover {
-  background-color: var(--color-dark);
+.party-index-sub-container h1 {
+  font-size: 1.6rem;
 }

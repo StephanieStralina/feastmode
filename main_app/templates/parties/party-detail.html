@@ -4,64 +4,66 @@
     <link rel="stylesheet" href="{% static 'css/party-detail.css' %}">
 {% endblock %} 
 {% block content %}
-<div class="party-detail">
-<section>
-    <h1>{{party.owner.first_name}}'s {{ party.name }}</h1>
-</section>
-<section>
-    <p>When | {{party.time}}</p>
-    <p>Where | {{party.location}}</p>
-    <p>Wear | {{party.dresscode}}</p>
-</section>
-<section>
-    {% if party.owner.id == user.id %}
-    <p>Invitation Code: {{party.invite_id}}</p>
-    <a href ="{% url 'party-update' party.invite_id%}" class="btn">Edit Party</a>
-    {% elif user.is_authenticated %}
-    <form
-        action="{% url 'add-rsvp' party.invite_id %}"
-        method="POST"
-        autocomplete="off"
-    >
-        {% csrf_token %}
-        {{ rsvp_form.as_table }}
-        <button type="submit" class="btn submit">RSVP</button>
-    <form>
-    {% else %}
-    <p>Not logged in? Don't have an account?</p>
-    <a href="{% url "signin" %}" class="btn">Log In</a>
-    <a href="{% url "signup" %}" class="btn">Sign Up</a>
-    {% endif %}
-</section>
-<section class="flex-column">
-    <h1>RSVPs</h1>
-    <ul>
-        {% for rsvp in party.rsvp_set.all %}
-            {% if rsvp.user.id == party.owner.id %}
-                <li>Host - {{ rsvp.user.username}}</li>
+    <div class="party-detail-container">
+        <section class="party-detail-title">
+            <h1>{{party.owner.first_name}}'s {{ party.name }}</h1>
+        </section>
+        <section class="party-detail-sub-container">
+            <h1>Information</h1>
+            <p>When | {{party.time}}</p>
+            <p>Where | {{party.location}}</p>
+            <p>Wear | {{party.dresscode}}</p>
+            {% if party.owner.id == user.id %}
+                <div class="divider">
+                    <hr>
+                </div>
+                <p>Invitation Code: {{party.invite_id}}</p>
+                <a href ="{% url 'party-update' party.invite_id%}" class="btn">Edit Party</a>
+            {% elif user.is_authenticated %}
+                <form
+                    action="{% url 'add-rsvp' party.invite_id %}"
+                    method="POST"
+                    autocomplete="off"
+                >
+                    {% csrf_token %}
+                    {{ rsvp_form.as_table }}
+                    <button type="submit" class="btn submit">RSVP</button>
+            <form>
             {% else %}
-            <li> {{ rsvp.user.username }} ({{ rsvp.get_status_display }})</li>
+                <p>Not logged in? Don't have an account?</p>
+                <a href="{% url "signin" %}" class="btn">Log In</a>
+                <a href="{% url "signup" %}" class="btn">Sign Up</a>
             {% endif %}
-        {% endfor %}
-    </ul>
-</section>
-<section class="flex-column dishes-section">
-    <h1>Dishes</h1>
-    <div class="dishes-wrapper flex-row">
-        {% for dish in party.dish_set.all %}
-            <div class="dish-container flex-column">
-                <div class="dish-img-wrapper">
-                    <a href="{% url "dish-detail" party.invite_id dish.id %}"><img src="{{ dish.img_url }}" class="dish-img"></a>
-                </div>
-                <a href="{% url "dish-detail" party.invite_id dish.id %}">{{ dish.name }}</a>
-                <div class="flex-row">
-                    <a href="{% url "dish-update" party.invite_id dish.id %}"><img src="{% static '../static/images/edit.svg' %}"></a>
-                    <a href="{% url "dish-delete" party.invite_id dish.id %}"><img src="{% static '../static/images/delete.svg' %}"></a>
-                </div>
+        </section>
+        <section class="party-detail-sub-container">
+            <h1>RSVPs</h1>
+            <ul>
+                {% for rsvp in party.rsvp_set.all %}
+                    {% if rsvp.user.id == party.owner.id %}
+                        <li>Host - {{ rsvp.user.username}}</li>
+                    {% else %}
+                    <li> {{ rsvp.user.username }} ({{ rsvp.get_status_display }})</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </section>
+        <section class="party-detail-sub-container dishes-section">
+            <h1>Dishes</h1>
+            <div class="dishes-wrapper">
+                {% for dish in party.dish_set.all %}
+                    <div class="dish-container flex-column">
+                        <div class="dish-img-wrapper">
+                            <a href="{% url "dish-detail" party.invite_id dish.id %}"><img src="{{ dish.img_url }}" class="dish-img"></a>
+                        </div>
+                        <a href="{% url "dish-detail" party.invite_id dish.id %}">{{ dish.name }}</a>
+                        <div class="flex-row">
+                            <a href="{% url "dish-update" party.invite_id dish.id %}"><img src="{% static '../static/images/edit.svg' %}"></a>
+                            <a href="{% url "dish-delete" party.invite_id dish.id %}"><img src="{% static '../static/images/delete.svg' %}"></a>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
+            <a href="{% url "dish-create" party.invite_id %}" class="btn">Add a new dish</a>
+        </section>
     </div>
-</section>
-<a href="{% url "dish-create" party.invite_id %}" class="btn">Add a new dish</a>
-</div>
 {% endblock %}

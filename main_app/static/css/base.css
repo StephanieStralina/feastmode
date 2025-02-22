@@ -113,7 +113,7 @@ nav li {
 .btn {
     background-color: var(--color-accent);
     color: var(--color-neutral);
-    padding: 8px 16px;
+    padding: 10px 20px;
     border-radius: 6px;
     text-decoration: none;
     border: none;
@@ -225,7 +225,6 @@ nav li {
 }
 
 .hero-link a {
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     font-size: 2.5vmin;
     padding: 1vmin 2vmin 1vmin 2vmin;
 }
@@ -348,22 +347,23 @@ nav li {
 
 /* divider */
 
-.or-divider {
+.divider {
     display: flex;
     align-items: center;
     text-align: center;
     width: 100%;
-    margin-bottom: 32px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
-.or-divider hr {
+.divider hr {
     flex-grow: 1;
     border: none;
     height: 1px;
     background-color: #ccc;
 }
 
-.or-divider span {
+.divider span {
     padding: 0 10px;
     font-size: 0.9rem;
     color: #555;

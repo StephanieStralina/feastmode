@@ -1,11 +1,63 @@
-.party-detail {
+.party-detail-title {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: -80px;
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-image: linear-gradient(rgb(255 255 255 / 34%), rgba(255, 246, 231, 1)), url(../images/divimg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
+.party-detail-title h1 {
+    text-align: left;
+    font-size: 2.4rem;
+}
+
+.party-detail-title a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.party-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.party-detail-sub-container {
+    display: flex;
+    width: 450px;
+    padding: 16px 16px 32px 16px;
+    margin-bottom: 1.2rem;
+    background: #ffffff;
+    border: 1px solid #c1c1c1;
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.party-detail-sub-container h1 {
+    font-size: 1.6rem;
+}
+
+/* dishes */
+
 .dishes-section {
-    width: 80%;
     align-items: center;
 }
 
