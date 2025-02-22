@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
   <section class="signin-container">
-    <form action="{% url 'home' %}" method="post" class="signin">
+    <form action="{% url 'signin' %}" method="post" class="signin">
         <h1>Sign In</h1>
         {% csrf_token %} 
         {{ form.as_p }}
