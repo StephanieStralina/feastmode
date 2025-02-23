@@ -63,7 +63,7 @@ class Rsvp(models.Model):
 class Dish(models.Model):
   party = models.ForeignKey(Party, on_delete=models.CASCADE)
   name = models.CharField(max_length=100)
-  img_url = models.URLField(max_length=300)
+  img_url = models.URLField(max_length=300, verbose_name='Image URL')
   description = models.TextField(max_length=500)
   category = models.CharField(
     max_length=1,
