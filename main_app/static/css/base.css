@@ -85,7 +85,7 @@ nav a {
     text-decoration: none;
     color: var(--color-accent);
     font-weight: 600;
-    font-size: 16px;
+    font-size: 2.5vmin;
     transition: 0.3s;
 }
 
@@ -132,6 +132,7 @@ nav li {
     cursor: pointer;
     color: var(--color-accent);
     font: inherit;
+    font-size: 2.5vmin;
     font-weight: 600;
     transition: 0.3s;
 }
@@ -402,4 +403,10 @@ footer {
 
 .gap-1 {
     gap: 1rem;
+}
+
+@media screen and (max-width: 1023px) {
+    .nav-logo {
+        width: 30vmin;
+    }
 }
