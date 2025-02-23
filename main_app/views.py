@@ -99,13 +99,17 @@ class DishCreate(LoginRequiredMixin, CreateView):
     
     def form_valid(self, form):
         form.instance.party = self.party
+        if self.request.user.id == self.party.owner.id and not form.cleaned_data.get('claimed_by'):
+            form.instance.claimed_by = None
         return super().form_valid(form)
     
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
         if self.request.user.id == self.party.owner.id:
+            form.fields['claimed_by'].required = False
             form.fields['claimed_by'].queryset = User.objects.filter(rsvp__party__invite_id=self.party.invite_id)
         else:
+            form.fields['claimed_by'].empty_label = None
             form.fields['claimed_by'].queryset = User.objects.filter(id=self.request.user.id)
         return form
     
