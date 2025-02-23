@@ -41,6 +41,7 @@
 .party-detail-sub-container {
     display: flex;
     width: 60%;
+    flex-grow: 1;
     padding: 16px 16px 32px 16px;
     margin-bottom: 1.2rem;
     background: #ffffff;
@@ -86,7 +87,7 @@
 
 .dish-container {
     width: 30vmin;
-    height: 40vmin;
+    height: 45vmin;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -121,6 +122,20 @@
     margin-top: 1vmin;
 }
 
+.alert {
+    color: red;
+    font-size: 3vmin;
+}
+
+.cancel {
+    border-color: var(--color-accent);
+}
+
+.cancel h1 {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
 @media screen and (max-width: 1023px) {
     .dish-detail-sub-container {
         width: 60%;
@@ -139,6 +154,19 @@
 
     .dish-container {
         width: 50vmin;
-        height: 60vmin;
+        height: 65vmin;
+    }
+
+    .party-detail-sub-container form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2vmin;
+        padding: 8vmin;
+        border: .25vmin solid var(--color-neutral);
+    }
+
+    .party-detail-sub-container {
+        text-align: center;
     }
 }

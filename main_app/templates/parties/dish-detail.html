@@ -11,6 +11,12 @@
     {{ dish.get_category_display }}
     <p>Claimed by:</p>
     {{ dish.claimed_by }}
+    <div class="flex-row edit">
+      {% if dish.claimed_by.id == user.id or party.owner.id == user.id %}
+        <a href="{% url "dish-update" party.invite_id dish.id %}"><img src="{% static '../static/images/edit.svg' %}"></a>
+        <a href="{% url "dish-delete" party.invite_id dish.id %}"><img src="{% static '../static/images/delete.svg' %}"></a>
+      {% endif %}
+    </div>
   </div>
 </section>
 

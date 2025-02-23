@@ -85,7 +85,7 @@ nav a {
     text-decoration: none;
     color: var(--color-accent);
     font-weight: 600;
-    font-size: 16px;
+    font-size: 2.5vmin;
     transition: 0.3s;
 }
 
@@ -132,6 +132,7 @@ nav li {
     cursor: pointer;
     color: var(--color-accent);
     font: inherit;
+    font-size: 2.5vmin;
     font-weight: 600;
     transition: 0.3s;
 }
@@ -402,4 +403,65 @@ footer {
 
 .gap-1 {
     gap: 1rem;
+}
+
+@media screen and (max-width: 1023px) {
+    .nav-logo {
+        width: 30vmin;
+    }
+
+    .inner-testimonial {
+        height: 60vmin;
+        width: 60vmin;
+    }
+
+    .inner-testimonial p {
+        font-size: 3.5vmin;
+        align-content: flex-start;
+        padding: 4vmin 4vmin 0vmin 4vmin;
+    }
+
+    #app-intro h2 {
+        text-align: center;
+    }
+    
+    #app-intro p,
+    #app-intro ul {
+        font-size: 3.5vmin;
+    }
+
+    .landing-txt p {
+        font-size: 3.5vmin;
+    }
+
+    .landing-txt {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        line-height: 5vmin;
+        
+    }
+
+    .float-right {
+        display: block;
+        float: none;
+        width: 100%;
+        margin: 0 auto 4vmin;
+    }
+    
+    .float-left {
+        display: block;
+        float: none;
+        width: 100%;
+        margin: 0 auto 4vmin;
+    }
+    
+    .hero-link a {
+        font-size: 3.75vmin;
+        padding: 1.25vmin 2vmin 1.25vmin 2vmin;
+    }
+
+    .join-party {
+        font-size: 3vmin;
+    }
 }
