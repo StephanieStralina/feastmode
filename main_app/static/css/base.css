@@ -68,6 +68,7 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     z-index: 0;
 }
 
@@ -375,4 +376,30 @@ nav li {
         align-items: center;
         flex-direction: column;
     }
+}
+
+footer {
+    width: 100%;
+    background: transparent;
+    color: var(--color-accent);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 1rem 2rem;
+    position: relative;
+    z-index: 1;
+
+    img {
+        height: 40px;
+    }
+
+    div {
+        justify-content: center;
+    }
+}
+
+.gap-1 {
+    gap: 1rem;
 }
