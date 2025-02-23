@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import RsvpForm, PartyForm, CustomUserCreationForm
 from .helpers import get_rsvp
+from .models import DISH_CATEGORY
 
 # Create your views here.
 
