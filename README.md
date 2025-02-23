@@ -38,3 +38,4 @@
 - [ ] AI Dish suggestion generator for those who need
 help getting ideas for suitable options
 - [ ] Commenting on dishes so guests can ask questions or ask for recipes post-party
+- [ ] Copy link with invitation code and auto invites
