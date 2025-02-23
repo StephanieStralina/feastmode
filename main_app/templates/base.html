@@ -35,8 +35,19 @@
       </nav>
     </header>
     <main>
-        {% block content %} 
-        {% endblock %}
+      {% block content %} 
+      {% endblock %}
     </main>
+    <footer>
+      <div class='flex-row gap-1'>
+        <img src="{% static 'images/favicon.ico' %}">
+        <div class='flex-column'>Copyright © 2025 - All right reserved by Snack Squad</div>
+      </div>
+      <div class='flex-row'>
+        <a href='https://github.com/StephanieStralina/feastmode'>
+          <img src="{% static 'images/github.svg' %}">
+        </a>
+      </div>
+    </footer>
   </body>
 </html>
