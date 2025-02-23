@@ -99,12 +99,15 @@ class DishCreate(LoginRequiredMixin, CreateView):
     
     def form_valid(self, form):
         form.instance.party = self.party
+        if not form.cleaned_data.get('img_url'):
+            form.instance.img_url = 'https://i.imgur.com/MDp9VvT.png'
         if self.request.user.id == self.party.owner.id and not form.cleaned_data.get('claimed_by'):
             form.instance.claimed_by = None
         return super().form_valid(form)
     
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
+        form.fields['img_url'].required = False
         if self.request.user.id == self.party.owner.id:
             form.fields['claimed_by'].required = False
             form.fields['claimed_by'].queryset = User.objects.filter(rsvp__party__invite_id=self.party.invite_id)
@@ -136,11 +139,19 @@ class DishUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
+        form.fields['img_url'].required = False
         if self.request.user.id == self.party.owner.id:
+            form.fields['claimed_by'].required = False
             form.fields['claimed_by'].queryset = User.objects.filter(rsvp__party__invite_id=self.party.invite_id)
         else:
             form.fields['claimed_by'].queryset = User.objects.filter(id=self.request.user.id)
         return form
+    
+    def form_valid(self, form):
+        if not form.cleaned_data.get('img_url'):
+            form.instance.img_url = 'https://i.imgur.com/MDp9VvT.png'
+        return super().form_valid(form)
+    
     
     def get_success_url(self, **kwargs):
         invite_id = self.kwargs.get('invite_id')
