@@ -127,6 +127,15 @@
     font-size: 3vmin;
 }
 
+.cancel {
+    border-color: var(--color-accent);
+}
+
+.cancel h1 {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
 @media screen and (max-width: 1023px) {
     .dish-detail-sub-container {
         width: 60%;
