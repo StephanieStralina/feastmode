@@ -122,6 +122,11 @@
     margin-top: 1vmin;
 }
 
+.alert {
+    color: red;
+    font-size: 3vmin;
+}
+
 @media screen and (max-width: 1023px) {
     .dish-detail-sub-container {
         width: 60%;

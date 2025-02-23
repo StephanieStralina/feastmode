@@ -5,8 +5,9 @@ from django.utils import timezone
 from django.urls import reverse
 from main_app.models import Party, Rsvp, Dish
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.contrib import messages
 from .forms import RsvpForm, PartyForm, CustomUserCreationForm
 from .helpers import get_rsvp
 
@@ -112,13 +113,22 @@ class DishCreate(LoginRequiredMixin, CreateView):
         invite_id = self.kwargs.get('invite_id')
         return reverse('party-detail', kwargs={ 'invite_id': invite_id })
 
-class DishUpdate(LoginRequiredMixin, UpdateView):
+class DishUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Dish
     fields = '__all__'
 
     def dispatch(self, request, *args, **kwargs):
+        self.dish = self.get_object()
         self.party = Party.objects.get(invite_id=kwargs['invite_id'])
         return super().dispatch(request, *args, **kwargs)
+    
+    def test_func(self):
+        return self.request.user.id == self.party.owner.id or self.request.user.id == self.dish.claimed_by.id
+    
+    def handle_no_permission(self):
+        invite_id = self.party.invite_id
+        messages.error(self.request, "Sorry! You can't edit other guests dishes!")
+        return redirect('party-detail', invite_id= invite_id)    
     
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
@@ -132,12 +142,22 @@ class DishUpdate(LoginRequiredMixin, UpdateView):
         invite_id = self.kwargs.get('invite_id')
         return reverse('party-detail', kwargs={ 'invite_id': invite_id })
 
-class DishDelete(LoginRequiredMixin, DeleteView):
+class DishDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Dish
     
     def dispatch(self, request, *args, **kwargs):
+        self.dish = self.get_object()
+        self.party = self.dish.party
         self.invite_id = kwargs['invite_id']
         return super().dispatch(request, *args, **kwargs)
+    
+    def test_func(self):
+        dish = self.get_object()
+        return self.request.user.id == dish.party.owner.id or self.request.user.id == dish.claimed_by.id
+    
+    def handle_no_permission(self):
+        messages.error(self.request, "Sorry! You can't delete other guests dishes!")
+        return redirect('party-detail', invite_id=self.invite_id)
     
     def get_success_url(self, **kwargs):
         return reverse('party-detail', kwargs={ 'invite_id': self.invite_id })

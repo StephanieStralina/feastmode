@@ -7,6 +7,13 @@
     <div class="party-detail-container">
         <section class="party-detail-title">
             <h1>{{ party.name }}</h1>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert">
+                        {{ message }}
+                     </div>
+                {% endfor %}
+            {% endif %}
         </section>
         <section class="party-detail-sub-container">
             <h1>Information</h1>
