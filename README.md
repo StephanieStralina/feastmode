@@ -9,7 +9,7 @@
 **🍕 A Snack Squad Production 🍕**
 **[Stephanie Stralina](https://www.linkedin.com/in/stephaniestralina/)**
 **[Max Himmel](https://www.linkedin.com/in/maxhimmel/)**
-**[Sejin Park](https://www.linkedin.com/in/sagesejin/)**
+**[Sejin Park](https://www.linkedin.com/in/sejincp/)**
 **[Ali Sakibou](https://www.linkedin.com/in/ali-sakibou-73771188/)**
 
 #### [DEMO FEASTMODE HERE](https://feastmode-c7c27bc8f641.herokuapp.com/)

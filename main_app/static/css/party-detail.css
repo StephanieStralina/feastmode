@@ -96,6 +96,12 @@
     padding: 1vmin;
     border-radius: 10px;
     box-shadow: var(--card-box-shadow);
+    padding: 1rem 1rem 2rem 1rem;
+}
+
+.dish-container-edit {
+    display: inline-block;
+    margin-bottom: 1rem;
 }
 
 .dish-img-wrapper {

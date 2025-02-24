@@ -208,7 +208,7 @@ nav li {
         rgba(255, 246, 231, 1)),
         url('../images/Hero.jpg');
     height: 100%;
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -317,8 +317,8 @@ nav li {
 }
 
 .signup-section {
-    margin: 4vmin 0 4vmin 0;
-    padding: 2vmin 0 0 0;
+    margin: 8vmin 0 8vmin 0;
+    padding: 4vmin 0 4vmin 0;
     background-image: linear-gradient(rgba(255, 246, 231, 1), rgba(255, 246, 231, 0.375),
         rgba(255, 246, 231, 1)),
         url('../images/divimg.jpg');
