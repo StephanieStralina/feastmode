@@ -3,13 +3,13 @@
 # FeastMode
 
 <div id="header" align="center">
-  <img src="" width="800" height="400" alt="banner">
+  <img src="/main_app/static/images/banner.png" width="800" height="450" alt="The words FeastMode over a background of a table full of various foods where peoples hands are reaching for various dishes">
 </div>
 
 **🍕 A Snack Squad Production 🍕**
 **[Stephanie Stralina](https://www.linkedin.com/in/stephaniestralina/)**
 **[Max Himmel](https://www.linkedin.com/in/maxhimmel/)**
-**[Sejin Park](https://www.linkedin.com/in/maxhimmel/)**
+**[Sejin Park](https://www.linkedin.com/in/sagesejin/)**
 **[Ali Sakibou](https://www.linkedin.com/in/ali-sakibou-73771188/)**
 
 #### [DEMO FEASTMODE HERE](https://feastmode-c7c27bc8f641.herokuapp.com/)
