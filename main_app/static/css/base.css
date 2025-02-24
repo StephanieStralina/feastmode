@@ -81,6 +81,21 @@ h2 {
     font-size: var(--font-xl);
 }
 
+.page-header h1 {
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vmin;
+}
+
+.page-header + h2 {
+    text-align: center;
+}
+
 nav a {
     text-decoration: none;
     color: var(--color-accent);
@@ -405,7 +420,7 @@ footer {
     gap: 1rem;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1024px) {
     .nav-logo {
         width: 30vmin;
     }

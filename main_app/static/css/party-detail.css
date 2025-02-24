@@ -136,7 +136,7 @@
     text-decoration: underline;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1024px) {
     .dish-detail-sub-container {
         width: 60%;
         min-height: auto;
@@ -168,5 +168,12 @@
 
     .party-detail-sub-container {
         text-align: center;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .dish-container {
+        width: 50vmin;
+        height: 80vmin;
     }
 }

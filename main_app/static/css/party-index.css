@@ -41,6 +41,7 @@
 .party-index-sub-container {
   display: flex;
   width: 50vmin;
+  height: auto;
   margin-top: 4vmin;
   background: #ffffff;
   border: 1px solid #c1c1c1;
@@ -57,4 +58,11 @@
 
 .party-index-sub-container a {
   color: var(--color-dark);
+}
+
+@media screen and (max-width: 700px) {
+  .party-index-sub-container {
+    width: 80%;
+    padding: 1vmin;
+  }
 }
