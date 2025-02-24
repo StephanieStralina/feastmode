@@ -1,5 +1,6 @@
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.urls import reverse
@@ -34,6 +35,7 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'signup.html', context)
 
+@login_required
 def party_index(request):
     parties = Party.objects.filter(rsvp__user_id=request.user.id)
     
@@ -74,6 +76,7 @@ def party_find(request):
     invite_id = request.GET.get('invite_id')
     return redirect('party-detail', invite_id=invite_id)
 
+@login_required
 def add_rsvp(request, invite_id):
     rsvp_form = RsvpForm(request.POST)
     if rsvp_form.is_valid():
