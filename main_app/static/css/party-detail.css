@@ -136,6 +136,19 @@
     text-decoration: underline;
 }
 
+.gap {
+    gap: 2vmin;
+}
+
+.not-logged {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: .5vmin solid var(--color-neutral);
+    border-radius: 8px;
+    padding: .5vmin 1.5vmin 2vmin 1.5vmin;
+}
+
 @media screen and (max-width: 1024px) {
     .dish-detail-sub-container {
         width: 60%;

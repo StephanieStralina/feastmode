@@ -43,9 +43,13 @@
                     <button type="submit" class="btn submit">RSVP</button>
             <form>
             {% else %}
-                <p>Not logged in? Don't have an account?</p>
-                <a href="{% url "signin" %}" class="btn">Log In</a>
-                <a href="{% url "signup" %}" class="btn">Sign Up</a>
+                <div class="not-logged">
+                    <p>Not logged in? Don't have an account?</p>
+                    <div class="flex-row gap">
+                        <a href="{% url "signin" %}" class="btn">Log In</a>
+                        <a href="{% url "signup" %}" class="btn">Sign Up</a>
+                    </div>
+                </div>
             {% endif %}
         </section>
         <section class="party-detail-sub-container">
