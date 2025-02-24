@@ -134,7 +134,11 @@ class DishUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return super().dispatch(request, *args, **kwargs)
     
     def test_func(self):
-        return self.request.user.id == self.party.owner.id or self.request.user.id == self.dish.claimed_by.id
+        if self.request.user.id == self.party.owner.id:
+            return True
+        if self.dish.claimed_by == None:
+            return True
+        return self.request.user.id == self.dish.claimed_by.id
     
     def handle_no_permission(self):
         invite_id = self.party.invite_id
